@@ -50,7 +50,7 @@ router.post('/mercadorias', (req, res) =>   {
     const nome_mercadoria = req.body.mercadoria.substring(0,150);
     const preco_mercadoria = req.body.preco.substring(0,11);
     const descricao_mercadoria = req.body.descricao.substring(0,150);
-    execSQLQuery(`INSERT INTO compras (mercadoria, preco, descricao) values ("${nome_mercadoria}", "${preco_mercadoria}", "${descricao_mercadoria}" )`, res);
+    execSQLQuery(`INSERT INTO compras (mercadoria) values ("${nome_mercadoria}")`, res);
 });
 
 // Update na Mercadoria
@@ -60,8 +60,7 @@ router.patch('/mercadorias/:id', (req, res) =>  {
     const nome_merca = req.body.mercadoria.substring(0,150);
     const preco_merca = req.body.preco.substring(0,11);
     const descricao = req.body.descricao.substring(0,150);
-    execSQLQuery(`UPDATE compras set mercadoria = '${nome_merca}', preco = '${preco_merca}', descricao = 
-    '${descricao}' WHERE id_compras = ${id}
+    execSQLQuery(`UPDATE compras set mercadoria = '${nome_merca}' WHERE id_compras = ${id}
     `, res);
 });
 
@@ -82,8 +81,8 @@ function execSQLQuery(sqlQry, res)  {
         host     : 'localhost',
         port     : 3306,
         user     : 'root',
-        password : 'root',
-        database : 'minhafeira'
+        password : '123456',
+        database : 'id3712550_walteann'
     });
     connection.query(sqlQry, function(error, results, fields){
         if(error) 
