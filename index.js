@@ -64,14 +64,23 @@ router.patch('/mercadorias/:id', (req, res) =>  {
     `, res);
 });
 
-// router.get('/usuarios/login/:id?', (req, res) => {
+// Busca para Historico de compras Inicio
 
-//     const nomeU = req.body.nomeUsuario.substring(0,150);
-//     const senhaU = req.body.senhaUsuario.substring(0,150);
+//lista todas as mercadorias
+router.get('/historico-compras', (req, res) =>    {
+    execSQLQuery('select * from historico_compras', res);
+});
 
-//     execSQLQuery(`select nome_usuario, senha_usuario from usuarios where nome_usuario = '${nomeU}' AND '${senhaU}' ` , res);
+// Adicionar nova mercadoria
+router.post('/historico-compras', (req, res) =>   {
+    const nomeacao_da_compra = req.body.historico[0].nome;
+    // console.log(nomeacao_da_compra);
+    const historico = req.body.historico[0].hist;
+    // console.log(historico);
+    execSQLQuery(`INSERT INTO historico_compras (nomeacao_da_compra, historico) values ('${nomeacao_da_compra}', '${historico}')`, res);
+});
 
-// });
+//Fim Busca Historico de Compras
 
 
 
