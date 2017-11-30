@@ -90,8 +90,8 @@ function execSQLQuery(sqlQry, res)  {
         host     : 'localhost',
         port     : 3306,
         user     : 'root',
-        password : '123456',
-        database : 'id3712550_walteann'
+        password : 'root',
+        database : 'minhafeira'
     });
     connection.query(sqlQry, function(error, results, fields){
         if(error) 
